@@ -69,5 +69,9 @@ step 7
 
 //
 
+step 8
 
+creation des entity Season et Episode
+
+creation des fixtures associer 
 
