@@ -45,4 +45,10 @@ step 3
     npm install sass-loader@^13.0.0 sass --save-dev
     npm install bootstrap --save-dev
     npm install file-loader@^6.0.0 --save-dev
+
+step 4 
+
+création des deux Entity
+
+step 5
     
