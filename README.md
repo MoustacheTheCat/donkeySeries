@@ -63,4 +63,8 @@ création de fixtures
 doc trés utiles 
 
 https://phpdox.net/demo/Symfony2/classes/Doctrine_ORM_PersistentCollection.xhtml
-composer require phpstan/phpdoc-parser
+
+
+Gestion des erreur
+
+composer require symfony/http-kernel

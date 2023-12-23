@@ -16,22 +16,22 @@ class CategoryFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $horreur = new Category();
-        $horreur->setName('Horreur');
+        $horreur->setName('horreur');
         $manager->persist($horreur);
         $this->addReference(self::CATEGORIES_HORREUR, $horreur);
 
         $comedie = new Category();
-        $comedie->setName('Comédie');
+        $comedie->setName('comedy');
         $manager->persist($comedie);
         $this->addReference(self::CATEGORIES_COMEDIE, $comedie);
 
         $drame = new Category();
-        $drame->setName('Drame');
+        $drame->setName('drama');
         $manager->persist($drame);
         $this->addReference(self::CATEGORIES_DRAME, $drame);
 
         $action = new Category();
-        $action->setName('Action');
+        $action->setName('action');
         $manager->persist($action);
         $this->addReference(self::CATEGORIES_ACTION, $action);
         
