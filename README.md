@@ -53,5 +53,14 @@ création des deux Entity
 step 5
 
 creation de la relation entre category et program
- 
-    
+
+step 6
+
+    composer require orm-fixtures --dev
+
+création de fixtures
+
+doc trés utiles 
+
+https://phpdox.net/demo/Symfony2/classes/Doctrine_ORM_PersistentCollection.xhtml
+composer require phpstan/phpdoc-parser

@@ -6,19 +6,19 @@
 
 
 <div class="container-fluid">
-    <h1>Program</h1>
-
-       {% for program in programs %}
+    <h1>{{category.name}}</h1>
+    {% for program in programs %}
         <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+            <h2>{{ loop.index }} / {{ program.title }} </h2>
+            <p> Id : {{ program.id}}</p>
             <p>{{ program.summary }}</p>
             <a href="{{ path("app_program_show", { id: program.id }) }}">Voir la fiche</a>
         </div>
     {% else %}
         Aucune série trouvée.
     {% endfor %}
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
+    <a href="{{ path('app_category_shows') }}">
+        Retour à la liste des Categories
     </a>
 </div>
 {% endblock %}
