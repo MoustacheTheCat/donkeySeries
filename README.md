@@ -65,6 +65,9 @@ doc trés utiles
 https://phpdox.net/demo/Symfony2/classes/Doctrine_ORM_PersistentCollection.xhtml
 
 
-Gestion des erreur
+step 7
 
-composer require symfony/http-kernel
+//
+
+
+
