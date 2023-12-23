@@ -51,4 +51,7 @@ step 4
 création des deux Entity
 
 step 5
+
+creation de la relation entre category et program
+ 
     
