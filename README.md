@@ -36,7 +36,13 @@ step 2
 
 création de ProgramController et DefaultController
 
+step 3
 
-
-
-
+    composer require symfony/webpack-encore-bundle
+    npm install @symfony/webpack-encore --save-dev
+    composer require symfonycasts/sass-bundle
+    composer require twbs/bootstrap
+    npm install sass-loader@^13.0.0 sass --save-dev
+    npm install bootstrap --save-dev
+    npm install file-loader@^6.0.0 --save-dev
+    

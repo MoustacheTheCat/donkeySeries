@@ -1,0 +1,33 @@
+
+@import "~bootstrap/scss/bootstrap";
+
+
+$primary:#D35301;
+// $primary:#80109F;
+// $primary:#109F95;
+$secondary:#917962;
+$light:#E9E9DE;
+$dark:#291712;
+
+
+
+body {
+    background-color: $light !important;
+}
+
+
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: $primary !important;
+  }
+
+  :root,
+[data-bs-theme=light] {
+  --bs-primary: #D35301 ;
+//   --bs-primary: #80109F !important;
+//   --bs-primary: #109F95;
+  --bs-secondary: #917962;
+  --bs-light: #E9E9DE ;
+  --bs-dark: #291712;
+ 
+}
