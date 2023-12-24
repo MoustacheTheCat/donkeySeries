@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{page_title}} Donkey Series{% endblock %}
+
+{% block body %}
+
+
+<div class="container-fluid">
+    <div class="media">
+        <div class="media-body">
+            <h1 class="mt-0">{{ program.title }}</h1>
+            <p>Catégorie : {{ program.category.name }}</p>
+            <p>{{ season.description }}</p>
+        </div>
+        <div>
+            {% for episode in episodes %}
+                <ul>
+                    <li>
+                        <a href="{{path('app_program_show_season_episode', {'id': program.id, 'seasonId': season.id, 'episodeId':episode.id })}}">{{episode.title}}</a>
+                    </li>
+                </ul>
+            {% else %}
+                <p>Aucune Episode n'est disponible pour le moment</p>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="{{ path('app_program_show', {'id': program.id} ) }}">
+        Retour à la liste des saisons de {{ program.title }}
+    </a>
+</div>
+{% endblock %}
