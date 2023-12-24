@@ -33,8 +33,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-                 
+        <div class="col-md-4">
+            <a href="{{ path('app_program_show_season', {'program_id': program.id, 'season_id': season.id}) }}"> Retour à la liste des Episode de la saison {{ season.number }} de {{ program.title }}</a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ path('app_program_show', {'id': program.id} ) }}"> Retour à la liste des saisons de {{ program.title }}</a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ path('app_program_shows' ) }}"> Retour à la liste des series</a>
         </div>
     </div>
 </div>

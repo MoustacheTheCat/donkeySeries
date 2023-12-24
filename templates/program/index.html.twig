@@ -17,8 +17,14 @@
     {% else %}
         Aucune série trouvée.
     {% endfor %}
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ path('app_index') }}">Retour à l'accueil</a>
+        </div>
+        <div class="col-md-6">
+            <a href="{{ path('app_category_shows') }}">Retour à la liste de categories</a>
+        </div>
+    </div>
 </div>
 {% endblock %}

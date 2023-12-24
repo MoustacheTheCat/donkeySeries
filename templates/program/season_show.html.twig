@@ -4,28 +4,52 @@
 
 {% block body %}
 
-
 <div class="container-fluid">
     <div class="media">
         <div class="media-body">
-            <h1 class="mt-0">{{ program.title }}</h1>
+            <h1 class="mt-0">{{ page_title }}</h1>
             <p>Catégorie : {{ program.category.name }}</p>
+        </div>
+        <div>
+            <h2>Synopsis</h2>
             <p>{{ season.description }}</p>
         </div>
         <div>
-            {% for episode in episodes %}
-                <ul>
-                    <li>
-                        <a href="{{path('app_program_show_season_episode', {'id': program.id, 'seasonId': season.id, 'episodeId':episode.id })}}">{{episode.title}}</a>
-                    </li>
-                </ul>
-            {% else %}
-                <p>Aucune Episode n'est disponible pour le moment</p>
-            {% endfor %}
+            <h2>Episodes List</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Numéro</th>
+                                <th>Titre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for episode in episodes %}
+                                <tr>
+                                    <td>{{ episode.number }}</td>
+                                    <td><a href="{{path('app_program_show_season_episode', {'program_id': program.id, 'season_id': season.id, 'episode_id':episode.id })}}">{{episode.title}}</a></td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="2">Aucun épisode trouvé</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-    <a href="{{ path('app_program_show', {'id': program.id} ) }}">
-        Retour à la liste des saisons de {{ program.title }}
-    </a>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ path('app_program_show', {'id': program.id} ) }}"> Retour à la liste des saisons de {{ program.title }}</a>
+        </div>
+        <div class="col-md-6">
+            <a href="{{ path('app_program_shows' ) }}"> Retour à la liste des series</a>
+        </div>
+    </div>
+    
 </div>
 {% endblock %}

@@ -17,7 +17,7 @@
             <ul>
                 <li>
                     
-                    <a href="{{ path('app_program_show_season', {'id': program.id, 'seasonId': season.id}) }}">
+                    <a href="{{ path('app_program_show_season', {'program_id': program.id, 'season_id': season.id}) }}">
                         Saison {{ season.number }}
                     </a>
                 </li>
@@ -26,8 +26,13 @@
             <p>Aucune saison n'est disponible pour le moment</p>
         {% endfor %}
     </div>
-    <a href="{{ path('app_program_shows') }}">
-        Retour à la liste des programmes
-    </a>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ path('app_program_shows' ) }}"> Retour à la liste des series</a>
+        </div>
+        <div class="col-md-6">
+            <a href="{{ path('app_category_shows') }}">Retour à la liste de categories</a>
+        </div>
+    </div>
 </div>
 {% endblock %}
