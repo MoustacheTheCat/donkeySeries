@@ -50,7 +50,7 @@ class SeasonController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_season_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_season_show', methods: ['GET'],requirements: ['id' => '\d+'])]
     public function show(Season $season): Response
     {
         return $this->render('season/show.html.twig', [
@@ -58,7 +58,7 @@ class SeasonController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_season_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_season_edit', methods: ['GET', 'POST'],requirements: ['id' => '\d+'])]
     public function edit(Request $request, Season $season, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(SeasonType::class, $season);
@@ -82,7 +82,7 @@ class SeasonController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_season_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_season_delete', methods: ['POST'],requirements: ['id' => '\d+'])]
     public function delete(Request $request, Season $season, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$season->getId(), $request->request->get('_token'))) {

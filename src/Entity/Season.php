@@ -21,12 +21,15 @@ class Season
     private ?Program $program = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank()]
     private ?int $number = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank()]
     private ?int $year = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank()]
     private ?string $description = null;
 
     #[ORM\OneToMany(mappedBy: 'season', targetEntity: Episode::class)]
@@ -119,4 +122,7 @@ class Season
 
         return $this;
     }
+
+//     #[Assert\NotBlank(message: "ne me laisse pas tout vide")]
+// #[Assert\Length(max: "255", maxMessage: "La catégorie saisie {{ value }} est trop longue, elle ne devrait pas dépasser {{ limit }} caractères")]
 }
