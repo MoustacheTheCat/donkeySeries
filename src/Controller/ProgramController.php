@@ -2,15 +2,14 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
 use App\Repository\ProgramRepository;
 use App\Form\ProgramType;
 
-
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,6 +57,7 @@ class ProgramController extends AbstractController
     #[Route('/{id}', name: '_show', methods: ["GET"],requirements: ['id' => '\d+'])]
     public function show(Program $program): Response
     {
+        //dump($program->getSeasons()->ToArray());
         return $this->render('program/show.html.twig', [
             'page_title' => 'Program '.$program->getTitle(),
             'program' => $program,
