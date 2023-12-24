@@ -78,5 +78,11 @@ step 9
 utilsation de #[MapEntity]
 création de la function showSeasonEpidode dans le Programcontroller et de la template season_episode_show.html.twig
 
+step 10
+
+    composer require symfony/form
+
+
+
 
 
