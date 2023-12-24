@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
+use App\Entity\Actor;
 use App\Repository\ProgramRepository;
 use App\Form\ProgramType;
 

@@ -19,7 +19,7 @@ class EpisodeType extends AbstractType
             ->add('synopsis')
             ->add('season', EntityType::class, [
                 'class' => Season::class,
-'choice_label' => 'id',
+                'choice_label' => 'synopsis',
             ])
         ;
     }

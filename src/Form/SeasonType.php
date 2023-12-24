@@ -19,7 +19,7 @@ class SeasonType extends AbstractType
             ->add('description')
             ->add('program', EntityType::class, [
                 'class' => Program::class,
-'choice_label' => 'id',
+                'choice_label' => 'title',
             ])
         ;
     }
