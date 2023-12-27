@@ -21,6 +21,9 @@ class Actor
     #[ORM\ManyToMany(targetEntity: Program::class, inversedBy: 'actors')]
     private Collection $programs;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->programs = new ArrayCollection();
@@ -67,6 +70,18 @@ class Actor
     public function removeProgram(Program $program): static
     {
         $this->programs->removeElement($program);
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

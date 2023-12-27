@@ -30,10 +30,18 @@ class Season
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank()]
-    private ?string $description = null;
+    private ?string $synopsis = null;
 
     #[ORM\OneToMany(mappedBy: 'season', targetEntity: Episode::class)]
     private Collection $episodes;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
+    private ?string $slug = null;
 
     public function __construct()
     {
@@ -81,14 +89,14 @@ class Season
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getSynopsis(): ?string
     {
-        return $this->description;
+        return $this->synopsis;
     }
 
-    public function setDescription(string $description): static
+    public function setSynopsis(string $synopsis): static
     {
-        $this->description = $description;
+        $this->synopsis = $synopsis;
 
         return $this;
     }
@@ -123,6 +131,29 @@ class Season
         return $this;
     }
 
-//     #[Assert\NotBlank(message: "ne me laisse pas tout vide")]
-// #[Assert\Length(max: "255", maxMessage: "La catégorie saisie {{ value }} est trop longue, elle ne devrait pas dépasser {{ limit }} caractères")]
+
+
+public function getName(): ?string
+{
+    return $this->name;
+}
+
+public function setName(string $name): static
+{
+    $this->name = $name;
+
+    return $this;
+}
+
+public function getSlug(): ?string
+{
+    return $this->slug;
+}
+
+public function setSlug(string $slug): static
+{
+    $this->slug = $slug;
+
+    return $this;
+}
 }

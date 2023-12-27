@@ -5,8 +5,33 @@
 {% block body %}
 
 
-<div class="container-fluid">
-    <h1>Bienvenue !</h1>
-    <a href="{{path('app_category_shows')}}">Liste des Catetegories</a>
-</div>
+
+    <div class="bg-image-home mt-5 pt-5"></div>
+    <div class="m-5 p-5 div-citation">
+        <h3 class="text-center">"Dans le cinéma, ce n'est pas la réalité qui compte, mais ce que l'imagination peut en faire."</h3>
+        <h3 class="text-end">François Truffaut</h3>
+    </div>
+    <div>
+    <div class="row m-5">
+        <div class="col-12">
+            <h2 class="text-center home-sub-title">Les derniers films ajoutés</h2>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-around align-items-stretch flex-row flex-wrap align-self-stretch mb-5">
+        {% for program in programs %}
+            <div class="card home-card m-3" style="width: 18rem;">
+                <div class="d-flex align-items-center" style="height:360px">
+                    <img src="{{program.poster}}" alt="{{ program.title }} poster" class="card-img-top" >
+                </div>
+                <div class="card-body text-center m-3">
+                    <a href="{{ path('app_program_show', {'program_slug': program.slug} ) }}" class="btn btn-card-home">{{ program.title }}</a>
+                </div>
+            </div>
+        {% else %}
+            <h3>Aucune série trouvée.</h3>
+        {% endfor %}
+    </div>
+    {# <a href="{{path('app_category_shows')}}">Liste des Catetegories</a> #}
+
+
 {% endblock %}

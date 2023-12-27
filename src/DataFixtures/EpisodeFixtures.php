@@ -6,97 +6,12 @@ use App\Entity\Episode;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Cocur\Slugify\Slugify;
 
 class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        $episodeOneSeasonOneWalkingDead = new Episode();
-        $episodeOneSeasonOneWalkingDead->setTitle('Episode 1');
-        $episodeOneSeasonOneWalkingDead->setNumber(1);
-        $episodeOneSeasonOneWalkingDead->setSynopsis('Rick se réveille à l\'hopital après un long coma. Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.');
-        $episodeOneSeasonOneWalkingDead->setSeason($this->getReference(SeasonFixtures::SEASON_1_WALKING_DEAD));
-        $manager->persist($episodeOneSeasonOneWalkingDead);
-
-        $episodeTwoSeasonOneWalkingDead = new Episode();
-        $episodeTwoSeasonOneWalkingDead->setTitle('Episode 2');
-        $episodeTwoSeasonOneWalkingDead->setNumber(2);
-        $episodeTwoSeasonOneWalkingDead->setSynopsis('Rick, qui a réussi à s\'échapper de l\'hopital, retrouve sa femme et son fils. Il leur explique ce qu\'il s\'est passé et leur propose de le suivre.');
-        $episodeTwoSeasonOneWalkingDead->setSeason($this->getReference(SeasonFixtures::SEASON_1_WALKING_DEAD));
-        $manager->persist($episodeTwoSeasonOneWalkingDead);
-
-        $episodeOneSeasonOneHauntingHillHouse = new Episode();
-        $episodeOneSeasonOneHauntingHillHouse->setTitle('Episode 1');
-        $episodeOneSeasonOneHauntingHillHouse->setNumber(1);
-        $episodeOneSeasonOneHauntingHillHouse->setSynopsis('Le jeune Hugh Crain construit, dans les années 20, une immense demeure à la campagne, la Villa Hill House. Peu après son emménagement avec sa femme Olivia et leurs cinq enfants, des phénomènes étranges et inexpliqués se produisent.');
-        $episodeOneSeasonOneHauntingHillHouse->setSeason($this->getReference(SeasonFixtures::SEASON_1_HAUNTING_HILL_HOUSE));
-        $manager->persist($episodeOneSeasonOneHauntingHillHouse);
-
-        $episodeTwoSeasonOneHauntingHillHouse = new Episode();
-        $episodeTwoSeasonOneHauntingHillHouse->setTitle('Episode 2');
-        $episodeTwoSeasonOneHauntingHillHouse->setNumber(2);
-        $episodeTwoSeasonOneHauntingHillHouse->setSynopsis('Les enfants Crain sont terrorisés par des visions de plus en plus effrayantes. Hugh tente de rassurer sa famille, mais il est lui-même perturbé par des souvenirs du passé.');
-        $episodeTwoSeasonOneHauntingHillHouse->setSeason($this->getReference(SeasonFixtures::SEASON_1_HAUNTING_HILL_HOUSE));
-        $manager->persist($episodeTwoSeasonOneHauntingHillHouse);
-
-        $episodeOneSeasonOneAmericanHorrorStory = new Episode();
-        $episodeOneSeasonOneAmericanHorrorStory->setTitle('Episode 1');
-        $episodeOneSeasonOneAmericanHorrorStory->setNumber(1);
-        $episodeOneSeasonOneAmericanHorrorStory->setSynopsis('La famille Harmon, composée d\'un psychiatre pervers, de sa femme meurtrie et de leur fille satanique, s\'installe dans un manoir... hanté, après l\'adultère du père et la fausse couche de la mère. Les esprits rôdent et sont bien décidés à les torturer, afin de les confronter à leurs plus grandes peurs...'); 
-        $episodeOneSeasonOneAmericanHorrorStory->setSeason($this->getReference(SeasonFixtures::SEASON_1_AMERICAN_HORROR_STORY));
-        $manager->persist($episodeOneSeasonOneAmericanHorrorStory);
-
-        $episodeTwoSeasonOneAmericanHorrorStory = new Episode();
-        $episodeTwoSeasonOneAmericanHorrorStory->setTitle('Episode 2');
-        $episodeTwoSeasonOneAmericanHorrorStory->setNumber(2);
-        $episodeTwoSeasonOneAmericanHorrorStory->setSynopsis('Ben, Vivien et Violet Harmon quittent Boston pour s\'installer à Los Angeles. Ils emménagent dans une somptueuse demeure de la ville, à un prix étrangement bas, car la maison a la réputation d\'être hantée. Ben, psychiatre, espère y soigner son épouse Vivien, enceinte et traumatisée par une fausse couche, ainsi que leur fille Violet, qui s\'est automutilée. Les Harmon ne sont pas au bout de leurs peines : la maison est hantée par d\'anciens propriétaires, la famille Langdon, dont le fils Tate est un dangereux psychopathe.');
-        $episodeTwoSeasonOneAmericanHorrorStory->setSeason($this->getReference(SeasonFixtures::SEASON_1_AMERICAN_HORROR_STORY));
-        $manager->persist($episodeTwoSeasonOneAmericanHorrorStory);
-
-        $episodeOneSeasonOneLoveDeathAndRobots = new Episode();
-        $episodeOneSeasonOneLoveDeathAndRobots->setTitle('Episode 1');
-        $episodeOneSeasonOneLoveDeathAndRobots->setNumber(1);
-        $episodeOneSeasonOneLoveDeathAndRobots->setSynopsis('Trois robots se lancent dans une expérience qui les dépasse. Ils découvrent une réalité bien différente de ce qu\'ils imaginaient.');
-        $episodeOneSeasonOneLoveDeathAndRobots->setSeason($this->getReference(SeasonFixtures::SEASON_1_LOVE_DEATH_AND_ROBOTS));
-        $manager->persist($episodeOneSeasonOneLoveDeathAndRobots);
-
-        $episodeTwoSeasonOneLoveDeathAndRobots = new Episode();
-        $episodeTwoSeasonOneLoveDeathAndRobots->setTitle('Episode 2');
-        $episodeTwoSeasonOneLoveDeathAndRobots->setNumber(2);
-        $episodeTwoSeasonOneLoveDeathAndRobots->setSynopsis('Un agriculteur et son cochon partent à la recherche d\'une vie meilleure et découvrent l\'enfer sur Terre.');
-        $episodeTwoSeasonOneLoveDeathAndRobots->setSeason($this->getReference(SeasonFixtures::SEASON_1_LOVE_DEATH_AND_ROBOTS));
-        $manager->persist($episodeTwoSeasonOneLoveDeathAndRobots);
-
-        $episodeOneSeasonOnePennyDreadful = new Episode();
-        $episodeOneSeasonOnePennyDreadful->setTitle('Episode 1');
-        $episodeOneSeasonOnePennyDreadful->setNumber(1);
-        $episodeOneSeasonOnePennyDreadful->setSynopsis('Sir Malcolm Murray, Vanessa Ives et le pistolero Ethan Chandler unissent leurs forces pour combattre des créatures maléfiques qui terrorisent Londres.');
-        $episodeOneSeasonOnePennyDreadful->setSeason($this->getReference(SeasonFixtures::SEASON_1_PENNY_DREADFUL));
-        $manager->persist($episodeOneSeasonOnePennyDreadful);
-
-        $episodeTwoSeasonOnePennyDreadful = new Episode();
-        $episodeTwoSeasonOnePennyDreadful->setTitle('Episode 2');
-        $episodeTwoSeasonOnePennyDreadful->setNumber(2);
-        $episodeTwoSeasonOnePennyDreadful->setSynopsis('Vanessa Ives et Sir Malcolm Murray engagent le docteur Victor Frankenstein pour les aider à combattre les forces des ténèbres qui ont pris possession de la fille de ce dernier.');
-        $episodeTwoSeasonOnePennyDreadful->setSeason($this->getReference(SeasonFixtures::SEASON_1_PENNY_DREADFUL));
-        $manager->persist($episodeTwoSeasonOnePennyDreadful);
-
-        $episodeOneSeasonOneFearTheWalkingDead = new Episode();
-        $episodeOneSeasonOneFearTheWalkingDead->setTitle('Episode 1');
-        $episodeOneSeasonOneFearTheWalkingDead->setNumber(1);
-        $episodeOneSeasonOneFearTheWalkingDead->setSynopsis('Madison et Travis voient leur quotidien bouleversé par une mystérieuse épidémie qui se propage à une vitesse fulgurante à Los Angeles.');
-        $episodeOneSeasonOneFearTheWalkingDead->setSeason($this->getReference(SeasonFixtures::SEASON_1_FEAR_THE_WALKING_DEAD));
-        $manager->persist($episodeOneSeasonOneFearTheWalkingDead);
-
-        $episodeTwoSeasonOneFearTheWalkingDead = new Episode();
-        $episodeTwoSeasonOneFearTheWalkingDead->setTitle('Episode 2');
-        $episodeTwoSeasonOneFearTheWalkingDead->setNumber(2);
-        $episodeTwoSeasonOneFearTheWalkingDead->setSynopsis('Madison et Travis voient leur quotidien bouleversé par une mystérieuse épidémie qui se propage à une vitesse fulgurante à Los Angeles.');
-        $episodeTwoSeasonOneFearTheWalkingDead->setSeason($this->getReference(SeasonFixtures::SEASON_1_FEAR_THE_WALKING_DEAD));
-        $manager->persist($episodeTwoSeasonOneFearTheWalkingDead);
-
-        
-
         $seasonsData = [
             SeasonFixtures::SEASON_1_THE_BIG_BANG_THEORY => [
                 'season' => 1,
@@ -450,27 +365,236 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
                     ['season' => 12, 'number' => 24, 'title' => 'The Stockholm Syndrome', 'synopsis' => 'Bernadette and Wolowitz leave their kids for the first time; Penny and Leonard try to keep a secret; Sheldon and Amy stick together; and Koothrappali makes a new friend, as the gang travels together into an uncharted future.'],
                 ],
             ],
+            SeasonFixtures::SEASON_1_BREAKING_BAD => [
+                'season' => 1,
+                'episodes' => [
+                    ['season' => 1, 'number' => 1, 'title' => 'Pilot', 'synopsis' => "A high school chemistry teacher turned methamphetamine manufacturer teams up with a former student to secure his family's financial future."],
+                    ['season' => 1, 'number' => 2, 'title' => "Cat's in the Bag...", 'synopsis' => "Walter and Jesse try to dispose of the two bodies in the RV, but are dragged into Tuco's criminal activities."],
+                    ['season' => 1, 'number' => 3, 'title' => "...And the Bag's in the River", 'synopsis' => "Walter tries to bond with his new partner and Jesse is given an ultimatum after a confrontation with Krazy-8."],
+                    ['season' => 1, 'number' => 4, 'title' => 'Cancer Man', 'synopsis' => "Walter's secret is in jeopardy when Skyler thanks Gretchen for paying for his treatment."],
+                    ['season' => 1, 'number' => 5, 'title' => 'Gray Matter', 'synopsis' => "Walter and Skyler attend a former colleague's party. Jesse tries to free himself from Krazy-8."],
+                    ['season' => 1, 'number' => 6, 'title' => 'Crazy Handful of Nothin', 'synopsis' => "Walter accepts his new identity as a drug manufacturer after a PTA meeting. Jesse's relationship with Jane develops."],
+                    ['season' => 1, 'number' => 7, 'title' => 'A No-Rough-Stuff-Type Deal', 'synopsis' => "Walter and Jesse face difficulties in their drug production. Hank tries to track down the RV that belongs to the mysterious 'Heisenberg'."],
+                ],
+            ],
+            SeasonFixtures::SEASON_2_BREAKING_BAD => [
+                'season' => 2,
+                'episodes' => [
+                    ['season' => 2, 'number' => 1, 'title' => 'Seven Thirty-Seven', 'synopsis' => "Walter and Jesse deal with the aftermath of their first drug deal. Skyler's frustration with Walter's secrecy continues to grow."],
+                    ['season' => 2, 'number' => 2, 'title' => 'Grilled', 'synopsis' => "Walter and Jesse are held captive by a drug distributor, Tuco Salamanca, who is dangerously unstable."],
+                    ['season' => 2, 'number' => 3, 'title' => 'Bit by a Dead Bee', 'synopsis' => "Walter and Jesse try to cover their tracks as they deal with the fallout from their encounter with Tuco. Skyler grows more suspicious of Walter's behavior."],
+                    ['season' => 2, 'number' => 4, 'title' => 'Down', 'synopsis' => "Walter's cancer takes a turn for the worse, leading to a series of drastic decisions. Jesse's relationship with Jane intensifies."],
+                    ['season' => 2, 'number' => 5, 'title' => 'Breakage', 'synopsis' => "Walter and Jesse's drug business expands, but so does the danger. Skyler's involvement deepens as she seeks to protect her family."],
+                    ['season' => 2, 'number' => 6, 'title' => 'Peekaboo', 'synopsis' => "Jesse comes face to face with the brutal reality of the drug trade. Walter tries to make amends with his family."],
+                    ['season' => 2, 'number' => 7, 'title' => 'Negro y Azul', 'synopsis' => "The fallout from the deaths of two drug dealers continues to affect Walter and Jesse's operation. Hank investigates a new lead in the drug trade."],
+                    ['season' => 2, 'number' => 8, 'title' => 'Better Call Saul', 'synopsis' => "Walter and Jesse seek legal advice from a colorful attorney named Saul Goodman. Skyler's suspicions about Walter's behavior grow stronger."],
+                    ['season' => 2, 'number' => 9, 'title' => '4 Days Out', 'synopsis' => "Walter and Jesse's RV breaks down in the desert, leading to a life-or-death situation. Skyler confronts Walter about his lies."],
+                    ['season' => 2, 'number' => 10, 'title' => 'Over', 'synopsis' => "Walter's world unravels as his secrets come to light. Jesse is caught in the crossfire of a deadly confrontation."],
+                    ['season' => 2, 'number' => 11, 'title' => 'Mandala', 'synopsis' => "Walter and Jesse's drug business continues to grow, leading to new partnerships and new challenges. Skyler's involvement deepens."],
+                    ['season' => 2, 'number' => 12, 'title' => 'Phoenix', 'synopsis' => "Walter's actions have tragic consequences, and Jesse spirals into a dark place. Skyler makes a shocking discovery."],
+                    ['season' => 2, 'number' => 13, 'title' => 'ABQ', 'synopsis' => "The season finale brings several storylines to a head, with life-changing consequences for Walter and those around him."],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_THE_WIRE => [
+                'season' => 1,
+                'episodes' => [
+                    ['season' => 1, 'number' => 1, 'title' => 'The Target', 'synopsis' => "The police set up surveillance on Avon Barksdale's drug operation. McNulty and his team try to build a case against him."],
+                    ['season' => 1, 'number' => 2, 'title' => 'The Detail', 'synopsis' => "McNulty and his team continue to gather evidence on Barksdale's drug empire. The street-level dealers face increased police pressure."],
+                    ['season' => 1, 'number' => 3, 'title' => 'The Buys', 'synopsis' => "McNulty and his team try to get the wiretap up and running. Barksdale's crew expands its territory."],
+                    
+                ],
+            ],
+            SeasonFixtures::SEASON_2_THE_WIRE => [
+                'season' => 2,
+                'episodes' => [
+                    ['season' => 2, 'number' => 1, 'title' => 'Ebb Tide', 'synopsis' => "The focus shifts to the docks as the police investigate smuggling operations. McNulty and Bunk deal with the aftermath of a murder."],
+                    ['season' => 2, 'number' => 2, 'title' => 'Collateral Damage', 'synopsis' => "The investigation into the smuggling ring continues. The longshoremen deal with changes at the docks."],
+                    ['season' => 2, 'number' => 3, 'title' => 'Hot Shots', 'synopsis' => "McNulty and Bunk continue their murder investigation. The drug trade on the streets faces new challenges."],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_TWIN_PEAKS => [
+                'season' => 1,
+                'episodes' => [
+                    ['season' => 1, 'number' => 1, 'title' => 'Pilot', 'synopsis' => "The investigation into the murder of Laura Palmer begins in the small town of Twin Peaks."],
+                    ['season' => 1, 'number' => 2, 'title' => 'Traces to Nowhere', 'synopsis' => "Agent Cooper and the local police continue to unravel the mystery surrounding Laura's death."],
+                    ['season' => 1, 'number' => 3, 'title' => 'Zen, or the Skill to Catch a Killer', 'synopsis' => "Cooper employs unorthodox methods to gain insight into Laura's murder. Secrets are revealed."],
+                ],
+            ],
+            SeasonFixtures::SEASON_2_TWIN_PEAKS => [
+                'season' => 2,
+                'episodes' => [
+                    ['season' => 2, 'number' => 1, 'title' => 'May the Giant Be with You', 'synopsis' => "Cooper investigates a new murder case, and the mysteries of Twin Peaks deepen."],
+                    ['season' => 2, 'number' => 2, 'title' => 'Coma', 'synopsis' => "Cooper encounters supernatural elements in his investigation. Audrey becomes entangled in her own mystery."],
+                    ['season' => 2, 'number' => 3, 'title' => 'The Man Behind Glass', 'synopsis' => "The search for the killer intensifies. Nadine undergoes a transformation."],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_KAAMELOTT => [
+                'season' => 1,
+                'episodes' => [
+                    ['season' => 1, 'number' => 1, 'title' => 'La Table Ronde', 'synopsis' => "Le roi Arthur tente de réunir les chevaliers de la Table Ronde, mais cela ne se passe pas comme prévu."],
+                    ['season' => 1, 'number' => 2, 'title' => 'Le Chevalier Errant', 'synopsis' => "Le roi Arthur rencontre un chevalier errant en quête de travail."],
+                    ['season' => 1, 'number' => 3, 'title' => "L'Assemblée des Rois", 'synopsis' => "Le roi Arthur participe à une assemblée de rois, mais les discussions prennent une tournure inattendue."],
+                ],
+            ],
+            SeasonFixtures::SEASON_2_KAAMELOTT => [
+                'season' => 2,
+                'episodes' => [
+                    ['season' => 2, 'number' => 1, 'title' => 'Le Royaume Inconnu', 'synopsis' => "Le roi Arthur décide d'explorer un royaume inconnu et rencontre des personnages étranges en cours de route."],
+                    ['season' => 2, 'number' => 2, 'title' => 'La Scandaleuse Aventure', 'synopsis' => "Le roi Arthur et ses chevaliers se retrouvent impliqués dans une aventure scandaleuse."],
+                    ['season' => 2, 'number' => 3, 'title' => 'Le Passage', 'synopsis' => "Le roi Arthur tente de trouver un passage secret vers un territoire ennemi."]
+                ],
+            ],
+            SeasonFixtures::SEASON_1_MALCOLM => [
+                'season' => 1,
+                'episodes' => [
+                    ['season' => 1, 'number' => 1, 'title' => 'Pilot', 'synopsis' => "The family is introduced, and Malcolm begins attending a gifted class at school."],
+                    ['season' => 1, 'number' => 2, 'title' => 'Red Dress', 'synopsis' => "Malcolm tries to buy a red dress for a girl but runs into a series of problems."],
+                    ['season' => 1, 'number' => 3, 'title' => 'Home Alone 4', 'synopsis' => "Malcolm is left home alone, and chaos ensues."],
+                ],
+            ],
+            SeasonFixtures::SEASON_2_MALCOLM => [
+                'season' => 2,
+                'episodes' => [
+                    ['season' => 2, 'number' => 1, 'title' => 'Traffic Jam', 'synopsis' => "The family gets stuck in a traffic jam, leading to various adventures."],
+                    ['season' => 2, 'number' => 2, 'title' => "Lois's Birthday", 'synopsis' => "The family tries to plan a surprise birthday party for Lois."],
+                    ['season' => 2, 'number' => 3, 'title' => 'Dinner Out', 'synopsis' => "The family goes out to dinner and experiences a series of mishaps."],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_SOUTH_PARK => [
+                'season' => 1,
+                'episodes' => [
+                    ['season' => 1, 'number' => 1, 'title' => 'Cartman Gets an Anal Probe', 'synopsis' => "The boys encounter strange occurrences after an alien abduction."],
+                    ['season' => 1, 'number' => 2, 'title' => 'Weight Gain 4000', 'synopsis' => "Cartman competes in a weight loss contest, while Mr. Garrison attempts to become more physically fit."],
+                    ['season' => 1, 'number' => 3, 'title' => 'Volcano', 'synopsis' => "The town faces a volcanic eruption, leading to various absurd situations."],
+                ],
+            ],
+            SeasonFixtures::SEASON_2_SOUTH_PARK => [
+                'season' => 2,
+                'episodes' => [
+                    ['season' => 2, 'number' => 1, 'title' => 'Terrance and Phillip in Not Without My Anus', 'synopsis' => "Terrance and Phillip go on a wacky adventure."],
+                    ['season' => 2, 'number' => 2, 'title' => "Cartman's Mom Is Still a Dirty Slut", 'synopsis' => "The boys try to uncover the truth about Cartman's parentage."],
+                    ['season' => 2, 'number' => 3, 'title' => 'Chickenlover', 'synopsis' => "Officer Barbrady faces an unusual case involving chickens."],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_PEAKY_BLINDERS => [
+                'season' => 1,
+                'episodes' => [
+                    ['season' => 1, 'number' => 1, 'title' => 'Episode 1', 'synopsis' => "Thomas Shelby leads the Peaky Blinders, a gang in post-World War I Birmingham, England, known for their distinctive flat caps and razor blades sewn into their peaky hats."],
+                    ['season' => 1, 'number' => 2, 'title' => 'Episode 2', 'synopsis' => "Thomas Shelby's plan to take over the betting pitches in Birmingham gains momentum, but his activities draw unwanted attention from both the police and a rival gang."],
+                    ['season' => 1, 'number' => 3, 'title' => 'Episode 3', 'synopsis' => "As Thomas Shelby's power and influence grow, he faces betrayal from within his own family."],
+                ],
+            ],
+            SeasonFixtures::SEASON_2_PEAKY_BLINDERS => [
+                'season' => 2,
+                'episodes' => [
+                    ['season' => 2, 'number' => 1, 'title' => 'Episode 1', 'synopsis' => "Thomas Shelby is drawn into a dangerous web of intrigue involving a beautiful and mysterious woman."],
+                    ['season' => 2, 'number' => 2, 'title' => 'Episode 2', 'synopsis' => "The Peaky Blinders are under threat from a rival gang and government agents, and Thomas Shelby is forced to make difficult decisions to protect his family and empire."],
+                    ['season' => 2, 'number' => 3, 'title' => 'Episode 3', 'synopsis' => "As Thomas Shelby faces more danger and betrayal, he must navigate a treacherous world of politics and crime to protect his interests."],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_SCRUBS => [
+                'season' => 1,
+                'episodes' => [
+                    ['season' => 1, 'number' => 1, 'title' => 'My First Day', 'synopsis' => "John 'J.D.' Dorian starts his first day as an intern at Sacred Heart Hospital and quickly learns the ropes of working in a hospital."],
+                    ['season' => 1, 'number' => 2, 'title' => 'My Mentor', 'synopsis' => "J.D. seeks advice from Dr. Cox while struggling with the demands of his new job."],
+                    ['season' => 1, 'number' => 3, 'title' => 'My Best Friend\'s Mistake', 'synopsis' => "J.D.'s friendship with Turk is tested when he realizes Turk made a mistake during surgery."],
+                ],
+            ],
+            SeasonFixtures::SEASON_2_SCRUBS => [
+                'season' => 2,
+                'episodes' => [
+                    ['season' => 2, 'number' => 1, 'title' => 'My Overkill', 'synopsis' => "J.D. and Turk face challenges in their personal and professional lives, leading to difficult decisions."],
+                    ['season' => 2, 'number' => 2, 'title' => 'My Nightingale', 'synopsis' => "J.D. clashes with Dr. Cox while trying to prove himself as a doctor."],
+                    ['season' => 2, 'number' => 3, 'title' => 'My Case Study', 'synopsis' => "J.D. takes on the case of a patient who has been in a coma for years."],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_MAD_MEN => [
+                'season' => 1,
+                'episodes' => [
+                    ['season' => 1, 'number' => 1, 'title' => 'Smoke Gets in Your Eyes', 'synopsis' => "Don Draper, a creative director at an advertising agency in the 1960s, deals with personal and professional challenges."],
+                    ['season' => 1, 'number' => 2, 'title' => 'Ladies Room', 'synopsis' => "Don struggles to juggle his work and personal life, while Peggy Olson starts her career at the agency."],
+                    ['season' => 1, 'number' => 3, 'title' => 'Marriage of Figaro', 'synopsis' => "Don's home life begins to unravel, and the agency works on a campaign for a new client."],
+                ],
+            ],
+            SeasonFixtures::SEASON_2_MAD_MEN => [
+                'season' => 2,
+                'episodes' => [
+                    ['season' => 2, 'number' => 1, 'title' => 'For Those Who Think Young', 'synopsis' => "The agency faces changes and challenges in the 1960s advertising world."],
+                    ['season' => 2, 'number' => 2, 'title' => 'Flight 1', 'synopsis' => "The agency works on an airline account while dealing with personal issues and crises."],
+                    ['season' => 2, 'number' => 3, 'title' => 'The Benefactor', 'synopsis' => "The agency tries to secure an important client while navigating complex relationships."],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_WALKING_DEAD => [
+                'season' => 1,
+                'episodes' => [
+                    ['episode' => 1,'number' => 1, 'title' => 'Days Gone Bye', 'synopsis' => 'Rick Grimes wakes up in a deserted hospital and discovers a world overrun by the undead. He teams up with a group of survivors to search for his family.'],
+                    ['episode' => 2,'number' => 2, 'title' => 'Guts', 'synopsis' => 'Rick and the group venture into a large city to search for essential supplies. They must employ daring tactics to escape from the walkers.'],
+                    ['episode' => 3,'number' => 3, 'title' => 'Tell It to the Frogs', 'synopsis' => 'Rick is reunited with his family, but tensions and conflicts arise within the group as they struggle to adapt to the new reality.'],
+                ],
+            ],
+            SeasonFixtures::SEASON_2_WALKING_DEAD => [
+                'season' => 2,
+                'episodes' => [
+                    ['episode' => 1,'number' => 1, 'title' => 'What Lies Ahead', 'synopsis' => 'The survivor group leaves Atlanta in search of a safe haven. Secrets are revealed, and disagreements about the direction to take begin to surface.'],
+                    ['episode' => 2,'number' => 2, 'title' => 'Bloodletting', 'synopsis' => 'A group member is gravely injured, and Rick and the others desperately seek medical help at a nearby farm.'],
+                    ['episode' => 3,'number' => 3, 'title' => 'Save the Last One', 'synopsis' => 'The group faces heart-wrenching losses, and difficult decisions must be made to survive.'],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_HAUNTING_HILL_HOUSE => [
+                'season' => 1,
+                'episodes' => [
+                    ['episode' => 1,'number' => 1, 'title' => 'Steven Sees a Ghost', 'synopsis' => 'The Crain family returns to Hill House, where they once lived, to confront their traumatic past and the haunted house that still haunts them.'],
+                    ['episode' => 2,'number' => 2, 'title' => 'Open Casket', 'synopsis' => 'As the Crain family members deal with the aftermath of their experiences in Hill House, dark secrets are revealed.'],
+                    ['episode' => 3,'number' => 3, 'title' => 'Touch', 'synopsis' => 'The story alternates between the past and the present, focusing on the family dynamics and the supernatural events that occurred in Hill House.'],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_AMERICAN_HORROR_STORY => [
+                'season' => 1,
+                'episodes' => [
+                    ['episode' => 1,'number' => 1, 'title' => 'Pilot', 'synopsis' => 'The Harmon family moves into a haunted mansion in Los Angeles, unaware of the supernatural horrors that await them.'],
+                    ['episode' => 2,'number' => 2, 'title' => 'Home Invasion', 'synopsis' => 'The Harmons deal with unsettling events in their new home, including a home invasion and strange occurrences.'],
+                    ['episode' => 3,'number' => 3, 'title' => 'Murder House', 'synopsis' => 'The history of the Murder House is revealed as the Harmon family continues to be tormented by the spirits that inhabit it.'],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_LOVE_DEATH_AND_ROBOTS => [
+                'season' => 1,
+                'episodes' => [
+                    ['episode' => 1,'number' => 1, 'title' => 'Sonnie\'s Edge', 'synopsis' => 'In a world where human fighters control bio-engineered monsters, Sonnie enters an underground fight club with a dangerous secret.'],
+                    ['episode' => 2,'number' => 2, 'title' => 'Three Robots', 'synopsis' => 'Three robots tour a post-apocalyptic city and try to understand humanity\'s downfall while cracking jokes along the way.'],
+                    ['episode' => 3,'number' => 3, 'title' => 'The Witness', 'synopsis' => 'A woman witnesses a murder from her apartment window, but things take a surreal and mysterious turn as she becomes the target of a pursuit.'],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_PENNY_DREADFUL => [
+                'season' => 1,
+                'episodes' => [
+                    ['episode' => 1,'number' => 1, 'title' => 'Night Work', 'synopsis' => 'Explorer Sir Malcolm Murray and the mysterious Vanessa Ives recruit American sharpshooter Ethan Chandler to help them track down Vanessa\'s missing friend.'],
+                    ['episode' => 2,'number' => 2, 'title' => 'Séance', 'synopsis' => 'Vanessa participates in a séance to contact the spirit of her deceased friend, but the results are chilling.'],
+                    ['episode' => 3,'number' => 3, 'title' => 'Resurrection', 'synopsis' => 'Dr. Victor Frankenstein is introduced, and his work on reanimating the dead takes center stage.'],
+                ],
+            ],
+            SeasonFixtures::SEASON_1_FEAR_THE_WALKING_DEAD => [
+                'season' => 1,
+                'episodes' => [
+                    ['episode' => 1,'number' => 1, 'title' => 'Pilot', 'synopsis' => 'High school guidance counselor Madison Clark and her fiancé, Travis Manawa, become aware of a rapidly spreading infection that threatens Los Angeles.'],
+                    ['episode' => 2,'number' => 2, 'title' => 'So Close, Yet So Far', 'synopsis' => 'Madison and Travis try to protect their families as the situation in the city deteriorates rapidly.'],
+                    ['episode' => 3,'number' => 3, 'title' => 'The Dog', 'synopsis' => 'As panic and chaos grip Los Angeles, Madison and Travis make difficult decisions to ensure their survival.'],
+                ],
+            ],
         ];
-
+        $slugify = new Slugify();
         foreach ($seasonsData as $seasonReference => $seasonData) {
             $season = $this->getReference($seasonReference);
-
             foreach ($seasonData['episodes'] as $episodeData) {
                 $episode = new Episode();
                 $episode->setSeason($season);
                 $episode->setNumber($episodeData['number']);
                 $episode->setTitle($episodeData['title']);
+                $episode->setSlug($slugify->slugify($episodeData['title']));
                 $episode->setSynopsis($episodeData['synopsis']);
 
                 $manager->persist($episode);
             }
         }
-
-        
-
-
-
-
         $manager->flush();
     }
 

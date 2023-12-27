@@ -5,26 +5,37 @@
 {% block body %}
 
 
-<div class="container-fluid">
-    <h1>{{page_title}}</h1>
-
-       {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-            <p>{{ program.summary }}</p>
-            <a href="{{ path("app_program_show", { id: program.id }) }}">Voir la fiche</a>
-        </div>
-    {% else %}
-        Aucune série trouvée.
-    {% endfor %}
-    
-    <div class="row">
-        <div class="col-md-6">
-            <a href="{{ path('app_index') }}">Retour à l'accueil</a>
-        </div>
-        <div class="col-md-6">
-            <a href="{{ path('app_category_shows') }}">Retour à la liste de categories</a>
+<div class="container-fluid pt-5">
+    <div class="row m-5">
+        <div class="col-12">
+            <h1 class="text-center">{{page_title}}</h1>
         </div>
     </div>
+    <div class="row d-flex justify-content-center align-items-stretch flex-row flex-wrap align-self-stretch my-5">
+        {% for program in programs %}
+        <div class="col m-3 d-flex justify-content-center">
+            <div class="card h-100 text-center card-index cards-lists">
+                <img src="{{program.poster}}" alt="Avatar" class="image">
+                <div class="middle card-body text-center">
+                    <a href="{{path('app_program_show', {'program_slug': program.slug})}}" class="card-text text">
+                        <h5 class="card-title title">{{ program.title }}</h5>
+                        <p class="summary">{{ program.summary }}</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        {% else %}
+            <h3>Aucune série trouvée.</h3>
+        {% endfor %}
+    </div>
+    
 </div>
 {% endblock %}
+
+{# <a href="{{path('app_program_show', {'program_slug': program.slug})}}">
+                    <img src="{{program.poster}}" alt="{{ program.title }} poster" class="card-img-top my-5 mx-auto cards-img">
+                    <div class="card-body text-center m-3">
+                        <p class="card-text summary">{{ program.summary }}</p>
+                    </div>
+                </a> #}

@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Cocur\Slugify\Slugify;
 
 #[Route('/category', name: 'app_category')]
 class CategoryController extends AbstractController
@@ -31,6 +32,8 @@ class CategoryController extends AbstractController
     public function new(Request $request, EntityManagerInterface $em): Response
     {
         $category = new Category();
+        $slugify = new Slugify();
+        $category->setSlug($slugify->slugify($category->getName()));
         $form = $this->createForm(CategoryType::class,$category) ;
         $form->add('submit',SubmitType::class,[
             'label' => 'Add category',
@@ -51,10 +54,12 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{categoryName}', name: '_show', methods: ["GET"],requirements: ['categoryName' => '[a-z\-]+'])]
-    public function show(string $categoryName, CategoryRepository $categoryRepository): Response
+    #[Route('/{category_slug}', name: '_show', methods: ["GET"],requirements: ['categoryName' => '[a-z\-]+'])]
+    public function show(
+        #[MapEntity(mapping: ['category_slug' => 'slug'])] Category $category
+        ): Response
     {
-        $category = $categoryRepository->findOneBy(['name' => $categoryName]);
+        
         return $this->render('category/show.html.twig', [
             'page_title' => 'Category '.$category->getName(),
             'category' => $category,

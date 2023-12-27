@@ -13,12 +13,25 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Program|null findOneBy(array $criteria, array $orderBy = null)
  * @method Program[]    findAll()
  * @method Program[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Program[]    findByAllAndReturnNews()
  */
 class ProgramRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Program::class);
+    }
+
+    public function findByAllAndReturnNews(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.id > :val')
+            ->setParameter('val', 0)
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
 //    /**

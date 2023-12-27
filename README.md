@@ -24,7 +24,6 @@ installation des dependances
 
     composer require symfony/orm-pack
 
-    composer require symfony/maker-bundle --dev
 
     composer require form validator
 

@@ -12,7 +12,7 @@
             <h2>{{ loop.index }} / {{ program.title }} </h2>
             <p> Id : {{ program.id}}</p>
             <p>{{ program.summary }}</p>
-            <a href="{{ path("app_program_show", { id: program.id }) }}">Voir la fiche</a>
+            <a href="{{ path("app_program_show", { program_slug: program.slug }) }}" class="link-saison">Voir la fiche</a>
         </div>
     {% else %}
         Aucune série trouvée.
